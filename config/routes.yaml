@@ -15,3 +15,13 @@ api_get_user:
   path: /api/users/{id}
   controller: App\Controller\ApiController::getTweetfonyUser
   methods: ["GET"]
+
+api_get_tweets:
+  path: /api/tweets
+  controller: App\Controller\ApiController::getTweets
+  methods: ["GET"]
+
+api_get_users:
+  path: /api/users
+  controller: App\Controller\ApiController::getUsers
+  methods: ["GET"]

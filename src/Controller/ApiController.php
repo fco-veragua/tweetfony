@@ -74,7 +74,7 @@ class ApiController extends AbstractController
 
         // Para enlazar a los usuarios que han dado like al tweet, añadimos sus enlaces API.
         $result->tweets = array();
-        foreach ($user->geTweets() as $tweet) {
+        foreach ($user->getTweets() as $tweet) {
             $result->tweets[] = $this->generateUrl('api_get_tweet', [
                 'id' => $tweet->getId(),
             ], UrlGeneratorInterface::ABSOLUTE_URL);
@@ -90,5 +90,31 @@ class ApiController extends AbstractController
 
         // Al utilizar JsonResponse, la conversión del objeto $result a JSON se hace de forma automática.
         return new JsonResponse($result);
+    }
+
+    function getTweets()
+    {
+        $entityManager = $this->getDoctrine();
+
+        $tweets = $entityManager->getRepository(Tweet::class)->findAll();
+
+        foreach ($tweets as $tweet) {
+            $result[] = $this->generateUrl('api_get_tweets', [
+                'id' => $tweet->getId(),
+            ], UrlGeneratorInterface::ABSOLUTE_URL);
+        }
+    }
+
+    function getUsers()
+    {
+        $entityManager = $this->getDoctrine();
+
+        $users = $entityManager->getRepository(User::class)->findAll();
+
+        foreach ($users as $user) {
+            $result[] = $this->generateUrl('api_get_users', [
+                'id' => $user->getId(),
+            ], UrlGeneratorInterface::ABSOLUTE_URL);
+        }
     }
 }
