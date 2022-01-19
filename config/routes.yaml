@@ -25,3 +25,18 @@ api_get_users:
   path: /api/users
   controller: App\Controller\ApiController::getUsers
   methods: ["GET"]
+
+api_index:
+  path: /api
+  controller: App\Controller\ApiController::index
+  methods: ["GET"]
+
+api_post_user:
+  path: /api/addUser
+  controller: App\Controller\ApiController::postUser
+  methods: ["POST"]
+
+api_post_tweet:
+  path: /api/addTweet
+  controller: App\Controller\ApiController::postTweet
+  methods: ["POST"]
