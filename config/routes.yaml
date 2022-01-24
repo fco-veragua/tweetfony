@@ -40,3 +40,13 @@ api_post_tweet:
   path: /api/addTweet
   controller: App\Controller\ApiController::postTweet
   methods: ["POST"]
+
+api_put_user:
+  path: /api/updateUser/{id}
+  controller: App\Controller\ApiController::putTweetfonyUser
+  methods: ["PUT"]
+
+api_put_tweet:
+  path: /api/updateTweet/{id}
+  controller: App\Controller\ApiController::putTweetfonyTweet
+  methods: ["PUT"]
