@@ -245,4 +245,44 @@ class ApiController extends AbstractController
             'id' => $tweet->getId(),
         ], UrlGeneratorInterface::ABSOLUTE_URL));
     }
+
+    function deleteTweetfonyUser($id)
+    {
+        // Debes obtener el recurso (tweet o usuario) a partir de la id.
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $user = $entityManager->getRepository(User::class)->find($id);
+
+        // Si el recurso no existe debes devolver un error código 404.
+        if ($user == null) {
+            return new JsonResponse([
+                'error' => 'User not found'
+            ], 404);
+        }
+
+        // Al borrar el recurso debes devolver una respuesta vacía (null) con código HTTP 204 (no content).
+        $entityManager->remove($user);
+        $entityManager->flush();
+        return new JsonResponse(null, 204);
+    }
+
+    function deleteTweet($id)
+    {
+        // Debes obtener el recurso (tweet o usuario) a partir de la id.
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $tweet = $entityManager->getRepository(Tweet::class)->find($id);
+
+        // Si el recurso no existe debes devolver un error código 404.
+        if ($tweet == null) {
+            return new JsonResponse([
+                'error' => 'Tweet not found'
+            ], 404);
+        }
+
+        // Al borrar el recurso debes devolver una respuesta vacía (null) con código HTTP 204 (no content).
+        $entityManager->remove($tweet);
+        $entityManager->flush();
+        return new JsonResponse(null, 204);
+    }
 }
