@@ -32,31 +32,31 @@ api_index:
   methods: ["GET"]
 
 api_post_user:
-  path: /api/addUser
+  path: /api/users
   controller: App\Controller\ApiController::postUser
   methods: ["POST"]
 
 api_post_tweet:
-  path: /api/addTweet
+  path: /api/tweets
   controller: App\Controller\ApiController::postTweet
   methods: ["POST"]
 
 api_put_user:
-  path: /api/updateUser/{id}
+  path: /api/users/{id}
   controller: App\Controller\ApiController::putTweetfonyUser
   methods: ["PUT"]
 
 api_put_tweet:
-  path: /api/updateTweet/{id}
+  path: /api/tweets/{id}
   controller: App\Controller\ApiController::putTweetfonyTweet
   methods: ["PUT"]
 
 api_delete_user:
-  path: /api/deleteUser/{id}
+  path: /api/users/{id}
   controller: App\Controller\ApiController::deleteTweetfonyUser
   methods: ["DELETE"]
 
 api_delete_tweet:
-  path: /api/deleteTweet/{id}
+  path: /api/tweets/{id}
   controller: App\Controller\ApiController::deleteTweet
   methods: ["DELETE"]

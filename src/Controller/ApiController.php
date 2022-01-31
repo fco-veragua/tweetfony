@@ -106,7 +106,7 @@ class ApiController extends AbstractController
         }
 
         foreach ($tweets as $tweet) {
-            $result[] = $this->generateUrl('api_get_tweets', [
+            $result[] = $this->generateUrl('api_get_tweet', [
                 'id' => $tweet->getId(),
             ], UrlGeneratorInterface::ABSOLUTE_URL);
         }
@@ -127,7 +127,7 @@ class ApiController extends AbstractController
         }
 
         foreach ($users as $user) {
-            $result[] = $this->generateUrl('api_get_users', [
+            $result[] = $this->generateUrl('api_get_user', [
                 'id' => $user->getId(),
             ], UrlGeneratorInterface::ABSOLUTE_URL);
         }
@@ -156,8 +156,8 @@ class ApiController extends AbstractController
         $user = $entityManager->getRepository(User::class)->find($request->request->get("userId"));
         if ($user == null) {
             return new JsonResponse([
-                'error' => 'UserName already exists'
-            ], 409);
+                'error' => 'UserName not found'
+            ], 404);
         }
 
         $tweet = new Tweet();
